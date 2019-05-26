@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='style.css' />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <title>TESTS</title>
+  </head>
+
+
+  <body>
+<div>
+
+    <div class='contenedor'>
+      <div>
+        <div id='navBar'>
+
+          <div id='titulo'> <h5> Memory Intensifies </h5>
+          </div>
+          <i class='fas fa-times' style='font-size: 30px;' id='cerrar'> </i>
+
+        </div>
+    </div>
+
+      <div class='contenedorComienzo'>
+
+        <button class='botonTest' id="bMundo"> Banderas del mundo </button>
+        <button class='botonTest' id="bEuropa"> Banderas de <br> Europa </button>
+        <button class='botonTest' id="bAmerica"> Banderas de <br> America </button>
+        <button class='botonTest' id="bAsia"> Banderas de <br> Asia </button>
+
+      </div>
+
+    </div>
+
+</div>
+    <script>
+
+    const electron = require('electron');
+    const {app,  Menu, ipcMain, ipcRenderer } = electron;
+    const url = require('url');
+    const path = require('path');
+    const BrowserWindow = electron.remote.BrowserWindow;
+    const fs = require('fs');
+
+    const cerrar = document.querySelector('#cerrar');
+
+    const botonComenzarTest = document.querySelector('#bMundo');
+    const botonEuropa = document.querySelector('#bEuropa');
+    const botonAmerica = document.querySelector('#bAmerica');
+    const botonAsia = document.querySelector('#bAsia');
+
+
+    let childWindow;
+
+    let childWindowEuropa;
+    let childWindowAmerica;
+    let childWindowAsia;
+
+
+
+    cerrar.onclick = function(){
+      window.close();
+    }
+
+
+    //THIS ALLOWS YOU TO CREATE A NEW WINDOW FROM THE APP FROM THE MENU
+      botonComenzarTest.onclick = function createAddWindow(){
+      //create new mainWindow
+      childWindow = new BrowserWindow({
+        show: true,
+        title: 'Banderas del mundo',
+      });
+
+
+      childWindow.loadURL(url.format({
+          pathname: path.join(__dirname + '/test/test.html'),
+          protocol: 'file:',
+          slashes: true
+      }));
+
+      childWindow.maximize();
+      childWindow.show();
+
+
+      //THIS CREATES A TEXT FILE
+
+      /*
+      fs.writeFile('testing.txt', 'Biatch', function(err){
+        if(err){
+          return console.log(err);
+        }
+        console.log("The file was saved!");
+      }) */
+
+    }
+
+    botonEuropa.onclick = function createAddWindow(){
+    //create new mainWindow
+    childWindow = new BrowserWindow({
+      show: true,
+      title: 'Banderas del mundo',
+    });
+
+
+    childWindow.loadURL(url.format({
+        pathname: path.join(__dirname + '/test2/test.html'),
+        protocol: 'file:',
+        slashes: true
+    }));
+
+    childWindow.maximize();
+    childWindow.show();
+
+
+    //THIS CREATES A TEXT FILE
+
+    /*
+    fs.writeFile('testing.txt', 'Biatch', function(err){
+      if(err){
+        return console.log(err);
+      }
+      console.log("The file was saved!");
+    }) */
+
+  }
+
+  botonAsia.onclick = function createAddWindow(){
+  //create new mainWindow
+  childWindow = new BrowserWindow({
+    show: true,
+    title: 'Banderas del mundo',
+  });
+
+
+  childWindow.loadURL(url.format({
+      pathname: path.join(__dirname + '/test3/test.html'),
+      protocol: 'file:',
+      slashes: true
+  }));
+
+  childWindow.maximize();
+  childWindow.show();
+
+
+  //THIS CREATES A TEXT FILE
+
+  /*
+  fs.writeFile('testing.txt', 'Biatch', function(err){
+    if(err){
+      return console.log(err);
+    }
+    console.log("The file was saved!");
+  }) */
+
+}
+
+botonAmerica.onclick = function createAddWindow(){
+//create new mainWindow
+childWindow = new BrowserWindow({
+  show: true,
+  title: 'Banderas del mundo',
+});
+
+
+childWindow.loadURL(url.format({
+    pathname: path.join(__dirname + '/test4/test.html'),
+    protocol: 'file:',
+    slashes: true
+}));
+
+childWindow.maximize();
+childWindow.show();
+
+
+//THIS CREATES A TEXT FILE
+
+/*
+fs.writeFile('testing.txt', 'Biatch', function(err){
+  if(err){
+    return console.log(err);
+  }
+  console.log("The file was saved!");
+}) */
+
+}
+
+
+
+
+
+    </script>
+  </body>
+</html>
